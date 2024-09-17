@@ -1,0 +1,200 @@
+[
+  {
+    "id": "0",
+    "categoria": "notebooks",
+    "nombre": "Legion 7i Gen9 Intel",
+    "thumbnail": "/legion7igen9_0/legion7igen9_0.jpg",
+    "imgs": [
+      "/legion7igen9_0/legion7igen9_0.jpg",
+      "/legion7igen9_0/legion7igen9_1.jpg",
+      "/legion7igen9_0/legion7igen9_2.jpg",
+      "/legion7igen9_0/legion7igen9_3.jpg",
+      "/legion7igen9_0/legion7igen9_4.jpg",
+      "/legion7igen9_0/legion7igen9_5.jpg",
+      "/legion7igen9_0/legion7igen9_6.jpg",
+      "/legion7igen9_0/legion7igen9_7.jpg"
+    ],
+    "descripcion": "Pantalla de 16\" y placa de video RTX™ 4070",
+    "precio": 4000000,
+    "priceId": "price_1PzQHyAsT9f83AEuWT5uLvwP"
+  },
+  {
+    "id": "1",
+    "categoria": "notebooks",
+    "nombre": "Hp 240 G9",
+    "thumbnail": "/notebookhp/notebookhp0.webp",
+    "imgs": ["/notebookhp/notebookhp0.webp"],
+    "descripcion": "Pantalla de 14\", Intel celeron N4500 8Gb de RAM y 256Gb SSD",
+    "precio": 450000,
+    "priceId": "price_1PzQIrAsT9f83AEuUEqrLYGf"
+  },
+  {
+    "id": "2",
+    "categoria": "placas de video",
+    "nombre": "Nvidia MSI Ventus 3x GEFORCE RTX 3080 Ti",
+    "thumbnail": "/gpu3080msi/gpu3080msi_0.webp",
+    "imgs": [
+      "/gpu3080msi/gpu3080msi_0.webp",
+      "/gpu3080msi/gpu3080msi_1.webp",
+      "/gpu3080msi/gpu3080msi_2.webp",
+      "/gpu3080msi/gpu3080msi_3.webp"
+    ],
+    "descripcion": "12GB GDDR6X, 1695 MHz, PCI-Express 4.0, 750W",
+    "precio": 1000000,
+    "priceId": "price_1PzQK8AsT9f83AEubjO6Bkww"
+  },
+  {
+    "id": "3",
+    "categoria": "microprocesadores",
+    "nombre": "AMD Ryzen 5 5600x",
+    "thumbnail": "/amd5600x/cpuamd5600x_0.webp",
+    "imgs": [
+      "/amd5600x/cpuamd5600x_0.webp",
+      "/amd5600x/cpuamd5600x_1.webp",
+      "/amd5600x/cpuamd5600x_2.webp",
+      "/amd5600x/cpuamd5600x_3.webp"
+    ],
+    "descripcion": "6 nucleos, 4.6Ghz, 32mb de caché",
+    "precio": 300000,
+    "priceId": "price_1PzQKtAsT9f83AEufjFC73nL"
+  },
+  {
+    "id": "4",
+    "categoria": "monitores",
+    "nombre": "Lg 25ms500",
+    "thumbnail": "/monitorLG27/monitorLg27_0.webp",
+    "imgs": ["/monitorLG27/monitorLg27_0.webp"],
+    "descripcion": "27\" IPS Led 1080p, HDMI",
+    "precio": 240000,
+    "priceId": "price_1PzQN5AsT9f83AEudr0xkIQP"
+  },
+  {
+    "id": "5",
+    "categoria": "auriculares",
+    "nombre": "Hyperx Cloud li 7.1",
+    "thumbnail": "/hyperxauriculares/auriculareshyperx_0.webp",
+    "imgs": [
+      "/hyperxauriculares/auriculareshyperx_0.webp",
+      "/hyperxauriculares/auriculareshyperx_1.webp",
+      "/hyperxauriculares/auriculareshyperx_2.webp",
+      "/hyperxauriculares/auriculareshyperx_3.webp",
+      "/hyperxauriculares/auriculareshyperx_4.webp"
+    ],
+    "descripcion": "Alcance inalambrico de 20m, cable de 1.3m, altavoz de 53mm",
+    "precio": 200000,
+    "priceId": "price_1PzQOPAsT9f83AEuTCoCcYEy"
+  },
+  {
+    "id": "6",
+    "categoria": "notebooks",
+    "nombre": "Hp 250 G8",
+    "thumbnail": "/hp250/hp250_0.webp",
+    "imgs": [
+      "/hp250/hp250_0.webp",
+      "/hp250/hp250_1.webp",
+      "/hp250/hp250_2.webp",
+      "/hp250/hp250_3.webp"
+    ],
+    "descripcion": "Pantalla de 15.6\" 1366x768 px, Intel core i3-1115g4 8Gb de RAM y 256Gb SSd",
+    "precio": 660000,
+    "priceId": "price_1PzQPZAsT9f83AEuKatmSAup"
+  },
+  {
+    "id": "7",
+    "categoria": "notebooks",
+    "nombre": "Hp 14-em0003la",
+    "thumbnail": "/hp14em003la/hp14em003la_0.webp",
+    "imgs": [
+      "/hp14em003la/hp14em003la_0.webp",
+      "/hp14em003la/hp14em003la_1.webp",
+      "/hp14em003la/hp14em003la_2.webp"
+    ],
+    "descripcion": "Pantalla de 14\" 1920x1080 px, AMD Ryzen 3 7320U, 256Gb SSD y 8Gb RAM",
+    "precio": 830000,
+    "priceId": "price_1PzQQbAsT9f83AEuLPjTDhyD"
+  },
+  {
+    "id": "8",
+    "categoria": "placas de video",
+    "nombre": "Nvidia MSI Ventus 2x GEFORCE RTX 4060 Oc Edition",
+    "thumbnail": "/gpu4060nvidia/gpu4060nvidia_0.webp",
+    "imgs": [
+      "/gpu4060nvidia/gpu4060nvidia_0.webp",
+      "/gpu4060nvidia/gpu4060nvidia_1.webp",
+      "/gpu4060nvidia/gpu4060nvidia_2.webp"
+    ],
+    "descripcion": "8GB GDDR6, 2500 MHz, PCI-Express 4.0, 550W",
+    "precio": 480000,
+    "priceId": "price_1PzQEeAsT9f83AEujppAthoB"
+  },
+  {
+    "id": "9",
+    "categoria": "microprocesadores",
+    "nombre": "AMD Ryzen 5 5600G",
+    "thumbnail": "/amd5600x/cpuamd5600x_0.webp",
+    "imgs": [
+      "/amd5600x/cpuamd5600x_0.webp",
+      "/amd5600x/cpuamd5600x_1.webp",
+      "/amd5600x/cpuamd5600x_3.webp"
+    ],
+    "descripcion": "6 nucleos 12 hilos, 3.9Ghz, 32mb de caché graficos integrados Radeon vega 11",
+    "precio": 210000,
+    "priceId": "price_1PzOwzAsT9f83AEurqUpa9MU"
+  },
+  {
+    "id": "10",
+    "categoria": "monitores",
+    "nombre": "Phillips 21.5\"",
+    "thumbnail": "/monitorphillips21.5/monitorphillips21.5_0.webp",
+    "imgs": [
+      "/monitorphillips21.5/monitorphillips21.5_0.webp",
+      "/monitorphillips21.5/monitorphillips21.5_1.webp",
+      "/monitorphillips21.5/monitorphillips21.5_2.webp"
+    ],
+    "descripcion": "21.5\" LCD antireflectante de 1920px-1080px 16:9, HDMI, 75Hz 4ms",
+    "precio": 190000,
+    "priceId": "price_1PzQRxAsT9f83AEuomXrDmlI"
+  },
+  {
+    "id": "11",
+    "categoria": "auriculares",
+    "nombre": "Corsair Gamer HS70 Pro Wireless",
+    "thumbnail": "/auricularescorsair/auricularescorsair_0.webp",
+    "imgs": [
+      "/auricularescorsair/auricularescorsair_0.webp",
+      "/auricularescorsair/auricularescorsair_1.webp",
+      "/auricularescorsair/auricularescorsair_2.webp",
+      "/auricularescorsair/auricularescorsair_3.webp"
+    ],
+    "descripcion": "Alcance inalambrico de 12m, cable de 1.5m, tamaño del altavoz 50mm, microfono incorporado",
+    "precio": 335000,
+    "priceId": "price_1PzQStAsT9f83AEuAKHEIFS4"
+  },
+  {
+    "id": "12",
+    "categoria": "tablets",
+    "nombre": "Samsung Galaxy Tab A9",
+    "thumbnail": "/samsunggalaxytaba9/galaxytaba9_0.webp",
+    "imgs": [
+      "/samsunggalaxytaba9/galaxytaba9_0.webp",
+      "/samsunggalaxytaba9/galaxytaba9_1.webp"
+    ],
+    "descripcion": "Pantalla de 8.7\" de 1340px x 800px, 4GB de RAM y 64GB de capacidad",
+    "precio": 270000,
+    "priceId": "price_1PzQTqAsT9f83AEuDCcdvvOy"
+  },
+  {
+    "id": "13",
+    "categoria": "tablets",
+    "nombre": "Apple iPad (9ª generación)",
+    "thumbnail": "/iPad9/iPad9_0.webp",
+    "imgs": [
+      "/iPad9/iPad9_0.webp",
+      "/iPad9/iPad9_1.webp",
+      "/iPad9/iPad9_2.webp"
+    ],
+    "descripcion": "Pantalla de 10.2\", 4Gb de Ram y 256Gb de capacidad",
+    "precio": 660000,
+    "priceId": "price_1PzQUiAsT9f83AEuP6fwhvxz"
+  }
+]

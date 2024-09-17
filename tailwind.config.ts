@@ -8,9 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        height: "height",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        yellow: {
+          300: "#fffc33",
+        },
       },
     },
   },

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "cat1",
+    "categoria": "Portatil",
+    "subCategorias": ["Notebooks", "Tablets"]
+  },
+  {
+    "id": "cat2",
+    "categoria": "PC",
+    "subCategorias": ["Placas de video", "Microprocesadores"]
+  },
+  {
+    "id": "cat3",
+    "categoria": "Varios",
+    "subCategorias": ["Monitores", "Auriculares"]
+  }
+]
