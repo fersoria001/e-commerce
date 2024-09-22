@@ -1,13 +1,20 @@
 'use client'
 
 import CarritoProvider from "@/components/carrito/CarritoProvider"
-import { UserProvider } from "@auth0/nextjs-auth0/client"
+import { ThemeProvider } from "@/components/theme/ThemeProvider"
+import { UserProfile, UserProvider } from "@auth0/nextjs-auth0/client"
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({ children, user }: { children: React.ReactNode, user: UserProfile | undefined }) {
     return (
-        <UserProvider>
-            <CarritoProvider>
-                {children}
+        <UserProvider user={user}>
+            <CarritoProvider user={user}>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange>
+                    {children}
+                </ThemeProvider>
             </CarritoProvider>
         </UserProvider>
     )

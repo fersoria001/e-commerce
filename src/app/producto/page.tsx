@@ -14,7 +14,7 @@ async function Page({ searchParams }: { searchParams?: { id?: string } }) {
         throw new Error(`no se puede encontrar el producto con id ${id} en productos`)
     }
     return (
-        <div className="min-h-screen mt-24 xl:mt-48">
+        <div className="min-h-screen mt-16 px-2">
             <Producto item={product} />
             <Sugerencias products={products} />
         </div>

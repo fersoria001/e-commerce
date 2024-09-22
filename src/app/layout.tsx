@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar/NavBar";
 import { Footer } from "@/components/footer/Footer";
 import { promises as fs } from 'fs';
 import Providers from "./providers";
+import { getSession } from "@auth0/nextjs-auth0";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,12 +36,12 @@ export default async function RootLayout({
 }>) {
   const file = await fs.readFile(process.cwd() + '/src/app/categorias.json', 'utf8');
   const categorias = JSON.parse(file) as Categoria[]
+  const session = await getSession();
   return (
     <html lang="en">
-
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >   <Providers>
+      >   <Providers user={session?.user}>
           <Navbar categorias={categorias} />
           {children}
           <Footer />

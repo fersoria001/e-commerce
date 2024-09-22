@@ -6,7 +6,7 @@ export function ErrorAlert({ errors }: { errors: string[] }) {
                     return (
                         <p 
                         key={i}
-                        className="text-red-500 font-semibold text-xs">
+                        className="text-red-500 text-xs">
                             {e}
                         </p>
                     )

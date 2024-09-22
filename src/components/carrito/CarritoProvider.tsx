@@ -1,18 +1,15 @@
 'use client'
 import { useState } from "react";
 import { CarritoContext } from "./Carrito";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { UserProfile } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
 import { Envio, Product } from "@/types/types";
 
-export default function CarritoProvider({ children }: { children: React.ReactNode }) {
+export default function CarritoProvider({ children, user }: { children: React.ReactNode, user: UserProfile | undefined }) {
     const [mostrarCarrito, setMostrarCarrito] = useState<boolean>(false)
     const [productos, setProductos] = useState<Product[]>([])
     const [envio, setEnvio] = useState<Envio>({})
-    const { user, error, isLoading } = useUser()
     const router = useRouter()
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>{error.message}</div>;
     return (
         <CarritoContext.Provider value={
             {

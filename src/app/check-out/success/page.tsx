@@ -1,10 +1,18 @@
 // /src/app/checkout/success/page.tsx
 
-const SuccessPage = () => {
+import { lineItems } from "@/actions"
+import { Receipt } from "@/components/checkout/Receipt"
+import { redirect } from "next/navigation"
+
+
+const SuccessPage = async ({ searchParams }: { searchParams?: { id: string } }) => {
+    if (!searchParams?.id) {
+        return redirect("/")
+    }
+    const receipt = await lineItems(searchParams.id)
     return (
-        <div className="text-center">
-            <h1 className="text-2xl">Success!</h1>
-            <p>Thank you for spending your money with us!</p>
+        <div className="p-2 md:p-8">
+            <Receipt receipt={receipt} />
         </div>
     )
 }

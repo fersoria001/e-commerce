@@ -63,7 +63,10 @@ export function SeleccionarEnvio() {
             return setErrors(error.flatten())
         }
         const envio: Envio = {
-            empresa: empresaDeEnvio,
+            empresa: {
+                nombre:empresaDeEnvio,
+                thumbnail: empresaDeEnvio === EmpresasDeEnvios.OCA ? "/oca.png" : "andreani.png"
+            },
             direccion: data,
             costo: costoDeEnvio
         }
@@ -209,7 +212,7 @@ export function SeleccionarEnvio() {
                         name="empresa"
                         value={empresaDeEnvio}
                         onChange={(e) => setEmpresaDeEnvio(e.currentTarget.value as EmpresasDeEnvios)}
-                        className="text-stone-600 p-1.5 border shadow-sm rounded-3xl focus:outline-blue-300">
+                        className="text-stone-600 p-1.5 border shadow-sm rounded-3xl focus:outline-blue-300 bg-white">
                         {
                             Object.keys(EmpresasDeEnvios).map(k =>
                                 <option key={k}>
@@ -229,7 +232,7 @@ export function SeleccionarEnvio() {
                         onChange={(e) => setDireccion(p => { return { ...p, direccion: e.target.value } })}
                         id="direccion"
                         name="direccion"
-                        className="w-full text-stone-600 p-1.5 border shadow-sm rounded-3xl focus:outline-blue-300" />
+                        className="w-full text-stone-600 p-1.5 border shadow-sm rounded-3xl focus:outline-blue-300 bg-white" />
                     {errors && errors.fieldErrors.direccion && <ErrorAlert errors={errors.fieldErrors.direccion} />}
                 </div>
                 <div className="mb-2 w-full">
@@ -254,12 +257,12 @@ export function SeleccionarEnvio() {
                             onChange={(e) => setDireccion(p => { return { ...p, ciudad: e.target.value } })}
                             id="ciudad"
                             name="ciudad"
-                            className="w-full text-stone-600 p-1.5 rounded-bl-3xl border focus:outline-blue-300" />
+                            className="w-full text-stone-600 p-1.5 rounded-bl-3xl border focus:outline-blue-300 bg-white" />
                         <input
                             onChange={(e) => setDireccion(p => { return { ...p, provincia: e.target.value } })}
                             id="provincia"
                             name="provincia"
-                            className="w-full text-stone-600 p-1.5 rounded-br-3xl border focus:outline-blue-300" />
+                            className="w-full text-stone-600 p-1.5 rounded-br-3xl border focus:outline-blue-300 bg-white" />
                     </div>
                     {errors && errors.fieldErrors.ciudad && <ErrorAlert errors={errors.fieldErrors.ciudad} />}
                     {errors && errors.fieldErrors.provincia && <ErrorAlert errors={errors.fieldErrors.provincia} />}
@@ -274,7 +277,7 @@ export function SeleccionarEnvio() {
                         onChange={(e) => setDireccion(p => { return { ...p, pais: e.target.value } })}
                         id="pais"
                         name="pais"
-                        className="w-full text-stone-600 p-1.5 border shadow-sm rounded-3xl focus:outline-blue-300" />
+                        className="w-full text-stone-600 p-1.5 border shadow-sm rounded-3xl focus:outline-blue-300 bg-white" />
                     {errors && errors.fieldErrors.pais && <ErrorAlert errors={errors.fieldErrors.pais} />}
                 </div>
                 <div className="flex flex-col mb-4">
@@ -287,7 +290,7 @@ export function SeleccionarEnvio() {
                         onChange={(e) => setDireccion(p => { return { ...p, cp: e.target.value } })}
                         id="cp"
                         name="cp"
-                        className="w-full text-stone-600 p-1.5 border shadow-sm rounded-3xl focus:outline-blue-300" />
+                        className="w-full text-stone-600 p-1.5 border shadow-sm rounded-3xl focus:outline-blue-300 bg-white" />
                     {errors && errors.fieldErrors.cp && <ErrorAlert errors={errors.fieldErrors.cp} />}
                 </div>
                 <div className="flex justify-between self-end p-1 w-full">

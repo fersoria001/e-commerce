@@ -1,33 +1,42 @@
 'use client'
 
 import { UserProfile } from "@auth0/nextjs-auth0/client"
-import Image from "next/image"
-import { useState } from "react"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 interface Props {
     user: UserProfile
 }
 export default function ProfileDropdownMenu({ user }: Props) {
-    const [show, setShow] = useState<boolean>(false)
     return (
-        <div className="relative">
-            <Image
-                onClick={() => setShow(!show)}
-                src={user.picture || "/profile.png"}
-                alt="profile picture"
-                height={24}
-                width={24}
-            />
-            {
-                show &&
-                <div className="absolute right-0 top-10 bg-white p-3">
-                    <h2>{user.name}</h2>
-                    <p>{user.email}</p>
+        <DropdownMenu modal={false}>
+            <DropdownMenuTrigger>
+                <Avatar>
+                    <AvatarImage src={user.picture || ""} />
+                    <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Billing</DropdownMenuItem>
+                <DropdownMenuItem>Team</DropdownMenuItem>
+                <DropdownMenuItem>
                     <a href="/api/auth/logout">
-                        cerrar sesión
+                        Cerrar sesión
                     </a>
-                </div>
-            }
-        </div>
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+
     )
 }

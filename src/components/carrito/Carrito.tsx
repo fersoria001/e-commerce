@@ -4,6 +4,18 @@ import { createContext, useContext } from "react"
 import CarritoItem from "./CarritoItem"
 import Link from "next/link"
 import { Envio, Product } from "@/types/types"
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
+import clsx from "clsx"
+import { ShoppingCartIcon } from "lucide-react"
+import { usePathname } from "next/navigation"
+import { Separator } from "@/components/ui/separator"
 
 export type CarritoContextType = {
     mostrarCarrito: boolean
@@ -33,37 +45,43 @@ export const CarritoContext = createContext<CarritoContextType>(
 
 export default function Carrito() {
     const { mostrarCarrito, setMostrarCarrito, productos } = useContext(CarritoContext)
+    const pathName = usePathname()
     return (
-        <div className="fixed right-0 top-0 z-30 w-full md:w-[300px] h-screen bg-background pb-8 overscroll-none">
-            <p
-                onClick={() => setMostrarCarrito(!mostrarCarrito)}
-                className="text-2xl p-3">
-                X
-            </p>
-            <div className="h-full pb-8 overflow-y-auto ">
-                {
-                    productos.map((p) => <CarritoItem key={p.id} product={p} />)
-                }
-                {
-                    productos.length > 0 &&
-                    <div>
-                        <div className="h-[1px] w-full bg-yellow-300"></div>
-                        <div className="p-2 flex flex-col">
-                            <p>
-                                Total: ${productos.reduce((acc, obj) => { return acc + (obj.precio * obj.cantidad!) }, 0)}
-                            </p>
-                            <Link
-                                href={"/envios"}
-                                onClick={() => setMostrarCarrito(false)}
-                                className="max-w-fit self-center px-7 py-0.5 rounded-lg bg-yellow-300 text-black font-semibold">
-                                Confirmar compra
-                            </Link>
-                        </div>
-                    </div>
-                }
-            </div>
-
-
-        </div>
+        <Sheet onOpenChange={() => setMostrarCarrito(!mostrarCarrito)} open={mostrarCarrito}>
+            <SheetTrigger>
+                <ShoppingCartIcon
+                    className={clsx("outline-stone-950 w-10 h-10 cursor-pointer hover:outline-stone-950/10", {
+                        "hidden": pathName === "/comprar"
+                    })} />
+            </SheetTrigger>
+            <SheetContent className="overflow-y-auto">
+                <SheetHeader>
+                    <SheetTitle></SheetTitle>
+                    <SheetDescription>
+                        {
+                            productos.map((p) => <CarritoItem key={p.id} product={p} />)
+                        }
+                        {
+                            productos.length > 0 &&
+                            <div>
+                                <Separator />
+                                <div className="p-2 flex flex-col">
+                                    <p className="mb-2">
+                                        Total: ${productos.reduce((acc, obj) => { return acc + (obj.precio * obj.cantidad!) }, 0)}
+                                    </p>
+                                    <Link
+                                        href={"/envios"}
+                                        onClick={() => setMostrarCarrito(false)}
+                                        className="max-w-fit self-center px-7 py-0.5 rounded-lg bg-yellow-300 text-black font-semibold">
+                                        Confirmar compra
+                                    </Link>
+                                </div>
+                            </div>
+                        }
+                    </SheetDescription>
+                </SheetHeader>
+            </SheetContent>
+        </Sheet>
     )
+
 }

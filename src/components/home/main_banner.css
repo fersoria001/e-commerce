@@ -1,0 +1,53 @@
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.card-enter {
+  visibility: hidden;
+}
+
+.card-visible {
+  visibility: visible;
+}
+
+.card-header-enter {
+  animation: slideInFromLeft 0.5s forwards;
+}
+
+.card-content-enter {
+  animation: slideInFromLeft 0.5s forwards;
+}
+
+.card-footer-enter {
+  animation: slideInFromLeft 0.5s forwards;
+}
+
+.card-header-enter-right {
+  animation: slideInFromRight 0.5s forwards;
+}
+
+.card-content-enter-right {
+  animation: slideInFromRight 0.5s forwards;
+}
+
+.card-footer-enter-right {
+  animation: slideInFromRight 0.5s forwards;
+}

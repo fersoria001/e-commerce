@@ -5,77 +5,59 @@ import clsx from "clsx"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useContext, useState } from "react"
-import ProfileDropdownMenu from "./ProfileDropdownMenu"
 import Categorias from "./Categorias"
 import { Categoria } from "@/app/layout"
-import Carrito, { CarritoContext } from "../carrito/Carrito"
+import Carrito from "../carrito/Carrito"
+import ProfileDropdownMenu from "./ProfileDropdownMenu"
+import NavbarSkeleton from "./NavbarSkeleton"
+
 interface Props {
     categorias: Categoria[]
 }
 export function Navbar({ categorias }: Props) {
-    const [showCat, setShowCat] = useState<boolean>(false)
     const pathName = usePathname()
-    const { user, error, isLoading } = useUser()
-    const { mostrarCarrito, setMostrarCarrito } = useContext(CarritoContext)
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>{error.message}</div>;
+    const { user, isLoading } = useUser()
+    if (isLoading) return <NavbarSkeleton />;
     return (
         <>
-            <nav className={clsx("absolute z-30 top-0 bg-transparent w-full min-h-14 flex py-5", {
+            <nav className={clsx("z-30 top-0 bg-yellow-300 w-full flex justify-between md:px-3", {
                 "bg-yellow-300": pathName != "/"
             })}>
-                <Link
-                    href={"/"}
-                    className="my-auto flex shrink-0 absolute -left-2 top-0 md:-top-1 xl:left-10">
-                    <Image
-                        src={"/logo.png"}
-                        alt="logo img"
-                        sizes="(max-width:425px) 16vw, (max-width: 768px) 10vw, (max-width: 1200px) 5vw, 12vw"
-                        style={{
-                            width: '100%',
-                            height: 'auto',
-                        }}
-                        className="grayscale brightness-50"
-                        width={48}
-                        height={48}
-                    />
-                    <h1 className="text-xl my-auto -ml-3 drop-shadow-md shrink-0 font-extrabold text-black">
+                <Link className="flex items-center xl:px-4" href={"/"}>
+                    <div className="w-[48px] h-[48px] md:w-[56px] md:h-[56px] lg:w-[64px] lg:h-[64px]">
+                        <Image
+                            src={"/logo.png"}
+                            alt={"logo img"}
+                            sizes="100vw"
+                            width={300}
+                            height={300}
+                            className="w-full h-auto"
+                        />
+                    </div>
+                    <h1 className="text-lg md:text-xl drop-shadow-md font-extrabold text-black">
                         pctech
                     </h1>
                 </Link>
-
-                <ul className="flex text-black text-md md:mt-1 items-end ml-auto mr-2 space-x-1 xl:pt-12 xl:space-x-4">
-                    <li onClick={() => setShowCat(!showCat)}>
-                        Categorías
-                    </li>
-                    <li
-                        className={clsx("", {
-                            "hidden": !user || pathName === "/comprar"
-                        })}
-                        onClick={() => setMostrarCarrito(!mostrarCarrito)}>
-                        carrito
-                    </li>
-                    <li>
+                <div className="flex text-black text-md w-full justify-between md:ps-10">
+                    <Categorias categorias={categorias} />
+                    <div className="flex md:space-x-2 items-center">
                         {
                             user ?
-                                <ProfileDropdownMenu user={user} />
+                                <>
+                                    <Carrito />
+                                    <ProfileDropdownMenu user={user} />
+
+                                </>
                                 :
                                 <a
                                     href="/api/auth/login"
-                                    className="px-2 py-0.5 bg-black text-white rounded-2xl xl:px-5 xl:py-1">
-                                    ingresar
+                                    className="h-10 px-4 py-2 rounded-lg bg-stone-950 text-white hover:bg-stone-900/90">
+                                    Ingresar
                                 </a>
                         }
-                    </li>
-                </ul>
-                {
-                    showCat && <Categorias categorias={categorias} />
-                }
+                    </div>
+                </div>
             </nav>
-            {
-                mostrarCarrito && <Carrito />
-            }
         </>
     )
 }

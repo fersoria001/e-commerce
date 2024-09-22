@@ -1,7 +1,8 @@
 'use client'
-import { useWindowDimensions } from "@/hooks/useWindowDimensions";
-import { useState } from "react";
+
 import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 interface Props {
     imgs: string[]
@@ -9,63 +10,36 @@ interface Props {
 }
 
 export function ImageSlider({ imgs, setActiveImg }: Props) {
-    const windowSize = useWindowDimensions()
-    const limit = windowSize.width >= 768 ? 4 : 3;
-    const pages = Math.round(imgs.length / limit)
-    const [page, setPage] = useState<number>(1)
-    const offset = (page - 1) * limit
-    function sliceArray() {
-        if (offset + limit > imgs.length) {
-            return imgs.slice(offset, imgs.length)
-        }
-        return imgs.slice(offset, offset + limit)
-    }
-    const ctrls = <>
-        <div
-            className="absolute left-4 inset-y-1/3"
-            onClick={() => {
-                setPage(p => {
-                    if (p > 1) return p - 1
-                    return p
-                })
-            }}>
-            {"<"}
-        </div>
-        <div
-            className="absolute right-4 inset-y-1/3"
-            onClick={() => {
-                setPage(p => {
-                    if (p < pages) return p + 1
-                    return p
-                })
-            }}>
-            {">"}
-        </div>
-    </>
     return (
-        <div className="relative mb-2 flex">
-            {
-                imgs.length > limit && ctrls
-            }
-            <div className="flex mx-auto space-x-2">
-                {
-                    sliceArray().map((imgUrl, index) =>
-                        <div
-                            onClick={() => setActiveImg(imgUrl)}
-                            key={imgUrl}
-                            className="border relative w-[80px] h-[80px] lg:w-[100px] lg:h-[100px]">
-                            <Image
-                                src={imgUrl}
-                                alt={`product image ${index}`}
-                                sizes="100vw"
-                                fill
-                            />
-                        </div>
-                    )
-                }
-            </div>
-
-
-        </div>
+        <Carousel
+            opts={{
+                align: 'start',
+                loop: false,
+                skipSnaps: false,
+                dragFree: false,
+            }}
+            className="w-full self-center px-10"
+        >
+            <CarouselContent className="-ml-4">
+                {imgs.map((img, i) => (
+                    <CarouselItem
+                        key={`imgSliderImg_${i}`}
+                        className="w-full md:basis-1/2 lg:basis-1/3 pl-4 relative cursor-pointer">
+                        <Card className="border-none" onClick={() => setActiveImg(img)}>
+                            <CardContent className="flex relative h-[100px] bg-white overflow-hidden rounded-3xl">
+                                <Image 
+                                    fill
+                                    src={img}
+                                    alt="Current Image"
+                                    className="object-contain"
+                                />
+                            </CardContent>
+                        </Card>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious className="-left-0" />
+            <CarouselNext className="-right-0" />
+        </Carousel>
     )
 }
