@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { TablaDeMisCompras } from "@/components/compras/TablaDeMisCompras";
 import { generarOpcionesDeRecuperacionDeSesionesDeStripe } from "@/lib/utils";

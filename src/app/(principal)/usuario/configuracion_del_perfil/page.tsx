@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { FormularioDeConfiguracionDeUsuario } from "@/components/usuario/FormularioDeConfiguracionDeUsuario"
 import { getSession } from "@auth0/nextjs-auth0"
