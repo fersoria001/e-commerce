@@ -20,6 +20,12 @@ const nextConfig = {
             port: '',
             pathname: '/links/**',
           },
+          {
+            protocol: 'https',
+            hostname: 'iili.io',
+            port: '',
+            pathname: '/*',
+          },
         ],
       },
 };

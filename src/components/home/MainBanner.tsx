@@ -1,4 +1,5 @@
 'use client'
+
 import Image from "next/image";
 import {
     Card,
@@ -10,69 +11,64 @@ import {
 } from "@/components/ui/card"
 import { useState, useEffect } from "react";
 import './main_banner.css'
+
 export function MainBanner() {
-    const [animateLeft, setAnimateLeft] = useState(false);
-    const [animateRight, setAnimateRight] = useState(false);
+    const [animarIzquierda, setAnimarIzquierda] = useState(false);
+    const [animarDerecha, setAnimarDerecha] = useState(false);
+
     useEffect(() => {
-        setAnimateLeft(true);
-        setTimeout(() => setAnimateRight(true), 150);
+        setAnimarIzquierda(true);
+        setTimeout(() => setAnimarDerecha(true), 150);
     }, []);
+
     return (
-        <section id="main-banner">
-            <div className="left">
-                <Card
-                    className={`absolute top-1/2 left-1/2 transform translate-x-[-50%] translate-y-[-50%] w-[90%] md:w-fit min-h-fit
-                        md:transform-none md:left-4 md:bottom-0
-                      z-10  bottom-0 lg:bottom-10 card-enter ${animateLeft ? 'card-visible' : ''}`}>
-                    <CardHeader className={`${animateLeft ? "card-header-enter" : ""}`}>
-                        <CardTitle>
-                            ¡Ofertas imperdibles!
-                        </CardTitle>
-                        <CardDescription>Los mejores gadgets al mejor precio</CardDescription>
-                    </CardHeader>
-                    <CardContent className={`${animateLeft ? "card-content-enter" : ""}`}>
-                        <div className="relative h-[100px] w-[100px]">
-                            <Image
-                                src={"/headphones1.png"}
-                                alt="Imagen de auriculares"
-                                fill
-                                className="object-contain"
-                            />
-                        </div>
-                    </CardContent>
-                    <CardFooter className={`${animateLeft ? "card-footer-enter" : ""}`}>
-                        <p>¡Compra ahora y ahorra!</p>
-                    </CardFooter>
-                </Card>
-                <Card
-                    className={`hidden md:block absolute
-                    top-20 right-2
-                     z-10 xl:top-1/4 card-enter ${animateRight ? 'card-visible' : ''}`}>
-                    <CardHeader className={`${animateRight ? "card-header-enter-right" : ""}`}>
-                        <CardTitle>
-                            Tecnología de vanguardia
-                        </CardTitle>
-                        <CardDescription>
-                            Rendimiento y calidad en cada compra
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className={`${animateRight ? "card-content-enter-right" : ""}`}>
-                        <div className="relative h-[100px] w-[100px]">
-                            <Image
-                                src={"/gpuamd1.png"}
-                                alt="Imagen de GPU AMD"
-                                fill
-                                className="object-contain"
-                            />
-                        </div>
-                    </CardContent>
-                    <CardFooter className={`${animateRight ? "card-footer-enter-right" : ""}`}>
-                        <p>¡No te lo pierdas!</p>
-                    </CardFooter>
-                </Card>
-                <div className="right h-[100vh]">
-                </div>
-            </div>
+        <section id="main-banner" className="relative w-full min-h-screen p-4 flex flex-col sm:flex-row lg:block items-center justify-center gap-4 overflow-hidden">
+            <Card
+                className={`w-full sm:w-1/2 lg:w-[45%] max-w-sm lg:absolute lg:left-4 lg:top-1/4 entrada-de-tarjeta ${animarIzquierda ? 'tarjeta-visible' : ''}`}>
+                <CardHeader className={`${animarIzquierda ? "entrada-de-cabecera-de-tarjeta" : ""}`}>
+                    <CardTitle className="text-lg sm:text-xl">
+                        ¡Ofertas imperdibles!
+                    </CardTitle>
+                    <CardDescription className="text-sm">Los mejores gadgets al mejor precio</CardDescription>
+                </CardHeader>
+                <CardContent className={`${animarIzquierda ? "entrada-de-contenido-de-tarjeta" : ""}`}>
+                    <div className="relative h-[80px] w-[80px] sm:h-[100px] sm:w-[100px]">
+                        <Image
+                            src="/headphones1.png"
+                            alt="Imagen de auriculares"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+                </CardContent>
+                <CardFooter className={`${animarIzquierda ? "entrada-de-pie-de-tarjeta" : ""}`}>
+                    <p className="text-sm">¡Compra ahora y ahorra!</p>
+                </CardFooter>
+            </Card>
+            <Card
+                className={`w-full sm:w-1/2 lg:w-[45%] max-w-sm lg:absolute lg:right-4 lg:bottom-1/4 entrada-de-tarjeta ${animarDerecha ? 'tarjeta-visible' : ''}`}>
+                <CardHeader className={`${animarDerecha ? "entrada-de-cabecera-de-tarjeta-derecha" : ""}`}>
+                    <CardTitle className="text-lg sm:text-xl">
+                        Tecnología de vanguardia
+                    </CardTitle>
+                    <CardDescription className="text-sm">
+                        Rendimiento y calidad en cada compra
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className={`${animarDerecha ? "entrada-de-contenido-de-tarjeta-derecha" : ""}`}>
+                    <div className="relative h-[80px] w-[80px] sm:h-[100px] sm:w-[100px]">
+                        <Image
+                            src="/gpuamd1.png"
+                            alt="Imagen de GPU AMD"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+                </CardContent>
+                <CardFooter className={`${animarDerecha ? "entrada-de-pie-de-tarjeta-derecha" : ""}`}>
+                    <p className="text-sm">¡No te lo pierdas!</p>
+                </CardFooter>
+            </Card>
         </section>
     )
 }
