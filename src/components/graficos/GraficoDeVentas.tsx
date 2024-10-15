@@ -28,7 +28,7 @@ export function GraficoDeVentas({ ventas }: { ventas: SerieDeTiempo }) {
                 <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">
                     {ventas.valores.reduce((ac, el) => ac + el.numero, 0)}
                     <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
-                        sesiones de venta
+                       unidades
                     </span>
                 </CardTitle>
             </CardHeader>

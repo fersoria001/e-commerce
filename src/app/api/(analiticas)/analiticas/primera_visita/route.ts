@@ -1,11 +1,14 @@
-import { GoogleCloudCredentials } from "@/types/types";
+import { CredencialesGoogleCloud } from "@/types/types";
 import { BigQuery } from "@google-cloud/bigquery";
 
 export async function GET() {
-  const credentials = JSON.parse( Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS_BASE64 as string, "base64").toString().replace(/\n/g,"")) as GoogleCloudCredentials
+  const credenciales = JSON.parse(
+    Buffer.from(
+      process.env.GOOGLE_APPLICATION_CREDENTIALS_BASE64 as string,
+      "base64").toString().replace(/\n/g, "")) as CredencialesGoogleCloud
   const bq = new BigQuery({
-    projectId: credentials.project_id,
-    credentials: credentials
+    projectId: credenciales.project_id,
+    credentials: credenciales
   });
   const dia = 24 * 7 * 1000;
   const ahora = new Date(new Date().getTime() - dia);

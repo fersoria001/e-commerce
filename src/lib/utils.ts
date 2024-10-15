@@ -192,7 +192,7 @@ export const incrementoPorcentual = ({
 };
 
 export function aSerieDeTiempo(eventos: Evento[]): SerieDeTiempo {
-  const gruposPorFecha = Object.groupBy(
+  const gruposPorFecha = agruparPor(
     eventos,
     (e: Evento) =>
       new Date(e.event_timestamp / 1000).toISOString().split("T")[0]
@@ -208,7 +208,7 @@ export function aSerieDeTiempo(eventos: Evento[]): SerieDeTiempo {
 }
 
 export function origenDeVisitas(eventos: EventoConGeo[]) {
-  const gruposGeograficos = Object.groupBy(
+  const gruposGeograficos = agruparPor(
     eventos,
     (e: EventoConGeo) => e.geo.country
   );
@@ -221,7 +221,7 @@ export function origenDeVisitas(eventos: EventoConGeo[]) {
 }
 
 export const mejores3Geo = (eventos: EventoConGeo[]) => {
-  const gruposPorPais = Object.groupBy(
+  const gruposPorPais = agruparPor(
     eventos,
     (e: EventoConGeo) => e.geo.country
   );
@@ -245,7 +245,7 @@ export const mejores3Geo = (eventos: EventoConGeo[]) => {
 };
 
 export const productosMasVistos = (eventos: EventoDeProducto[]) => {
-  const grupoPorNombreDeProducto = Object.groupBy(
+  const grupoPorNombreDeProducto = agruparPor(
     eventos,
     (producto) => producto.items[0].item_id
   );
@@ -327,7 +327,7 @@ export const relacionDeCarritoYCompras = ({ inicioDeCompra, finDeCompra }: {
 
 export const productoMasVendido = (eventos: EventoDeProducto[]) => {
   const productosDeTodasLasCompras = eventos.map((e) => e.items).reduce((ac, productos) => ac.concat(productos), [])
-  const grupoPorNombreDeProducto = Object.groupBy(
+  const grupoPorNombreDeProducto = agruparPor(
     productosDeTodasLasCompras,
     (producto) => producto.item_id
   );
@@ -355,7 +355,7 @@ export const productoMasVendido = (eventos: EventoDeProducto[]) => {
 
 export const productosVendidos = (eventos: EventoDeProducto[]) => {
   const productosPorFecha = eventos.flatMap((e) => {
-    const grupoPorIdDeProducto = Object.groupBy(e.items, (producto) => producto.item_id);
+    const grupoPorIdDeProducto = agruparPor(e.items, (producto) => producto.item_id);
 
     return Object.entries(grupoPorIdDeProducto).map(([_, productos]) => {
       if (productos && productos.length > 0) {
@@ -363,7 +363,7 @@ export const productosVendidos = (eventos: EventoDeProducto[]) => {
         return {
           fecha,
           nombre: productos[0].item_name,
-          numero: productos.length
+          numero: productos.reduce((ac, p) => ac + parseInt(p.quantity, 10), 0)
         };
       }
       return null
@@ -374,7 +374,7 @@ export const productosVendidos = (eventos: EventoDeProducto[]) => {
     } => p !== undefined && p !== null);
   });
 
-  const gruposPorFecha = Object.groupBy(productosPorFecha.filter(Boolean), (p) => p!.fecha);
+  const gruposPorFecha = agruparPor(productosPorFecha.filter(Boolean), (p) => p!.fecha);
 
   const resultado = Object.entries(gruposPorFecha).map(([fecha, productos]) => {
     if (productos) {
@@ -389,3 +389,14 @@ export const productosVendidos = (eventos: EventoDeProducto[]) => {
 
   return { valores: resultado };
 };
+
+export function agruparPor<T, K extends keyof any>(arreglo: T[], callback: (elemento: T) => K): Record<K, T[]> {
+  return arreglo.reduce((agrupado, elemento) => {
+    const clave = callback(elemento);
+    if (!agrupado[clave]) {
+      agrupado[clave] = [];
+    }
+    agrupado[clave].push(elemento);
+    return agrupado;
+  }, {} as Record<K, T[]>);
+}

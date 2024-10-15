@@ -18,6 +18,7 @@ import { Separator } from "@/components/ui/separator"
 import { useRouter } from "next/navigation"
 import { crearPedidoEnStripe } from "@/lib/actions"
 import { AlertaDeError } from "@/components/errores/AlertaDeError"
+import { agruparPor } from "@/lib/utils"
 
 const esquemaDeFormulario = z.object({
     productos: z.array(z.object({
@@ -56,7 +57,7 @@ export function CrearPedido({ productos, clientes }: { productos: Producto[], cl
         await crearPedidoEnStripe({ nuevoPedido })
         empujar("/panel_de_control/pedidos")
     }
-    const productGroups = Object.groupBy(productos, (item) => item.subCategoria.nombre)
+    const productGroups = agruparPor(productos, (item) => item.subCategoria.nombre)
     return (
         <Form {...formulario}>
             <form
