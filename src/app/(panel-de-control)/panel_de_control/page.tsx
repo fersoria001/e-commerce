@@ -110,7 +110,8 @@ export default async function Page({ searchParams: parametrosDeBusqueda }: {
         stripe.checkout.sessions.list(opciones),
         obtenerUsuariosRegistrados(),
         fetch(`${process.env.HOST}/api/analiticas/primera_visita`, {
-            method: "GET"
+            method: "GET",
+            cache: "no-store"
         })
     ])
     const visitantesUnicos = await respuesta.json()
