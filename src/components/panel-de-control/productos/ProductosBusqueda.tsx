@@ -10,9 +10,9 @@ export function ProductosBusqueda() {
     function manejarBusqueda(termino: string) {
         const parametros = new URLSearchParams(parametrosDeBusqueda);
         if (termino) {
-            parametros.set('query', termino);
+            parametros.set('consulta', termino);
         } else {
-            parametros.delete('query');
+            parametros.delete('consulta');
         }
         if (nombreDeCamino === "/panel_de_control/productos") {
             reemplazar(`${nombreDeCamino}?${parametros.toString()}`);
